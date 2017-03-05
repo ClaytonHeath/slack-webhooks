@@ -55,7 +55,7 @@ function get_details() {/*
 
         .header-image {
             position: relative;
-            height: 200px;
+            height: 160px;
             width: 100%;
             overflow: hidden;
             margin-bottom: 70px;
