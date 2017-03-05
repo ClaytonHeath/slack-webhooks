@@ -179,7 +179,7 @@ function get_details() {/*
         
     </header>
     <div class="container">
-        <div class=" col-md-3 col-md-offset-3 text-center">
+        <div class=" col-md-6 col-md-offset-3 text-center">
             <h2>We're going to do great things together</h2>
             <p>Thanks for volunteering to help us learn more. Please confirm your details and a member of our Marketing and Analytics team will contact you soon:</p>
             <form method="POST">
