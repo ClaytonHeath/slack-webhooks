@@ -37,7 +37,7 @@ module.exports = function (ctx, req, res) {
   
 });
 
-   }
+   }};
    
     res.writeHead(200, { 'Content-Type': 'text/html' });
                 return res.end(require('ejs').render(details_sent.stringify(), { logo_url: logo_url, ctx: ctx }));
