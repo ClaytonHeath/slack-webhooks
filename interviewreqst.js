@@ -93,7 +93,7 @@ function get_details() {/*
             border-radius: 0%;
             box-shadow: 0px 0px 0px 0px #D0D2D3;
             position: absolute;
-            top: 180px;
+            top: 100px;
             right: 45.5%;
         }
 
