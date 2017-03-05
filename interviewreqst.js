@@ -58,7 +58,7 @@ function get_details() {/*
             height: 160px;
             width: 100%;
             overflow: hidden;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
         }
 
         .header-image .image{
