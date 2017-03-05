@@ -10,7 +10,7 @@ module.exports = function (ctx, req, res) {
     // Configure routing
 
     if (req.method === 'GET')
-        return handle_get_invite();
+        return handle_get_details();
     else if (req.method === 'POST') {
             return postMessageToSlack();
     }
@@ -22,9 +22,9 @@ module.exports = function (ctx, req, res) {
         return res.end(require('ejs').render(oops.stringify(), { logo_url: logo_url, ctx: ctx, error: error }));
     }
 
-    function handle_get_invite() {
+    function handle_get_details() {
         res.writeHead(200, { 'Content-Type': 'text/html' });
-        return res.end(require('ejs').render(slack_invite.stringify(), { logo_url: logo_url, ctx: ctx }));
+        return res.end(require('ejs').render(get_details.stringify(), { logo_url: logo_url, ctx: ctx }));
     }
     
     function postMessageToSlack(){
@@ -75,7 +75,7 @@ module.exports = function (ctx, req, res) {
 
 }
 
-function slack_invite() {/*
+function get_details() {/*
 <html>
 <head>
     <title>Auth0 Feedback</title>
