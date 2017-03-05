@@ -37,43 +37,10 @@ module.exports = function (ctx, req, res) {
   
 });
 
-
    }
    
     res.writeHead(200, { 'Content-Type': 'text/html' });
-                return res.end(require('ejs').render(invite_sent.stringify(), { logo_url: logo_url, ctx: ctx }));
-
-    function handle_send_invite() {
-        require('superagent')
-            .post('https://' + ctx.secrets.SLACK_ORG + '.slack.com/api/users.admin.invite')
-            .type('form')
-            .send({
-                email: ctx.body.email.trim(),
-                token: ctx.secrets.SLACK_TOKEN,
-                set_active: true
-            })
-            .end(function (error, sres) {
-                if (error) 
-                    return handle_error({ code: 502, message: error.toString() });
-                if (sres.status !== 200) 
-                    return handle_error({ code: 502, message: 'Invalid response from Slack: ' + sres.status });
-                if (!sres.body.ok) {
-                    if (sres.body.error === 'missing_scope' && sres.body.needed === 'admin')
-                        return handle_error({ code: 400, message: 'The Slack token is missing `admin` scope required to invite users via Slack API. Use a token from Slack admin account.'})
-                    else if (sres.body.error === 'already_invited')
-                        return handle_error({ code: 400, message: 'You have been previously invited to this Slack team. Search for email from feedback@slack.com.' });
-                    else if (sres.body.error === 'already_in_team')
-                        return handle_error({ code: 400, message: 'You are already a member of this Slack team.'})
-                    else 
-                        return handle_error({ code: 502, message: 'Response from Slack: ' + sres.body.error });
-                }
-
-                res.writeHead(200, { 'Content-Type': 'text/html' });
-                return res.end(require('ejs').render(invite_sent.stringify(), { logo_url: logo_url, ctx: ctx }));
-            });
-    }
-
-}
+                return res.end(require('ejs').render(details_sent.stringify(), { logo_url: logo_url, ctx: ctx }));
 
 function get_details() {/*
 <html>
@@ -237,7 +204,7 @@ function get_details() {/*
 </html>
 */}
 
-function invite_sent() {/*
+function details_sent() {/*
 <html>
 <head>
     <title>Auth0 Feedback</title>
