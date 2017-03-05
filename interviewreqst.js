@@ -7,19 +7,6 @@ Function.prototype.stringify = function () {
 
 module.exports = function (ctx, req, res) {
 
-    // Validate webtask parameters
-
-    var required_params = ['SLACK_ORG', 'SLACK_TOKEN'];
-    for (var i = 0; i < required_params.length; i++) {
-        if (typeof ctx.secrets[required_params[i]] !== 'string')
-            return handle_error({ 
-                code: 400, 
-                message: 'You must specify the `' + required_params[i] 
-                    + '` parameter when creating the webtask using `wt create --secret ' 
-                    + required_params[i] + '={value}` argument.'
-            });
-    }
-
     // Configure routing
 
     if (req.method === 'GET')
