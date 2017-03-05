@@ -31,7 +31,6 @@ module.exports = function (ctx, req, res) {
     var slack = require('slack-notify')(ctx.secrets.SLACK_URL);
     slack.send({
   channel: '#general',
-  icon_url: 'http://example.com/my-icon.png',
   text: 'Here is my notification',
   
 });
