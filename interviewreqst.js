@@ -28,12 +28,11 @@ module.exports = function (ctx, req, res) {
     }
     
     function postMessageToSlack(){
-    var MY_SLACK_WEBHOOK_URL = ctx.secrets.SLACK_URL;
-    var slack = require('slack-notify')(MY_SLACK_WEBHOOK_URL);
+    var slack = require('slack-notify')(ctx.secrets.SLACK_URL);
     slack.send({
   channel: '#general',
   icon_url: 'http://example.com/my-icon.png',
-  text: 'Here is my notification' + ctx.body.email,
+  text: 'Here is my notification',
   
 });
 
